@@ -6,7 +6,7 @@ https://github.com/kennknowles/knockout-combinators
 [![Build status](https://travis-ci.org/kennknowles/knockout-combinators.png)](https://travis-ci.org/kennknowles/knockout-combinators)
 [![NPM version](https://badge.fury.io/js/knockout-combinators.png)](http://badge.fury.io/js/knockout-combinators)
 
-Utilities to combining & compose Knockout observables
+Utilities to combine & compose Knockout observables
 
 Quick Intro
 -----------
