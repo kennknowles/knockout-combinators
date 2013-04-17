@@ -1,0 +1,32 @@
+lib-cov
+*.seed
+*.log
+*.csv
+*.dat
+*.out
+*.pid
+*.gz
+
+pids
+logs
+results
+
+# Built products
+/lib-cov
+
+# Node / NPM
+npm-debug.log
+/node_modules
+
+# Bower
+/components
+
+# Coverage & test output
+/html-report
+
+# Emails
+*~
+
+# Vim
+\#*
+.\#*
