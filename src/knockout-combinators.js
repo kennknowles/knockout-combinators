@@ -109,6 +109,14 @@ function(ko, _) {
             write: function(value) { _(u(obsArray)).each(function(obs) { obs(value); }); }
         });
     }
+    
+    ///// λ sum :: obslike [obslike Number] -> obs Number
+    //
+    // Sums the observable in the array
+    
+    kc.sum = function(obsArray) {
+        return c(function() { return _(u(obsArray)).reduce(function(partialSum, obslike) { return partialSum + u(obslike); }, 0) });
+    }
 
     ///// λ toggle :: obs -> (() -> ())
     //

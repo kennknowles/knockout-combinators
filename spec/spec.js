@@ -85,6 +85,17 @@ define([
         });
     });
 
+    describe('kc.sum', function() {
+        it('Sums the values in an observable array of observables', function() {
+            var input = [o(1), o(2), o(3)];
+            var output = kc.sum(input);
+
+            expect(output()).to.equal(6);
+            input[1](5);
+            expect(output()).to.equal(9);
+        });
+    });
+
     describe('kc.toggle', function() {
         it('Flips the boolean value of an observable', function() {
             var input = o(true);

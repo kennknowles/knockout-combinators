@@ -21,6 +21,7 @@ Quick Intro
  - `kc.deepUnwrap` recursively traverses a value and unwraps all the observables it sees. Especially handy for logging.
  - `kc.wrap` wraps a value in an observable if it is not already.
  - `kc.monitor` logs every change to an observable to the console (throttled as this can be crazy).
+ - `kc.sum` sums the values in an observable array.
 
 See the code itself for more details; each function is really quite small. To be expanded as I scrape these out of my various codebases. Pull request very welcome!
 
