@@ -139,6 +139,51 @@ function(ko, _) {
             kc.toggle(viewModel[field])();
         };
     }
+
+    ///// λ validated :: ... -> Observable ({ok: a} | {error: b})
+    //
+    // Like ko.computed, but the underlying observable is expected to return something
+    // like `Either a b` as specified in the signature. Then it allows some chaining
+
+    kc.validated = function(options) {
+        var underlying_observable = ko.computed(options); /* Must return {'errors': [...]} or {'ok': ...}  */
+
+        underlying_observable.andThen = function(otherValidated) {
+            // This is the Either monad for a monoid of error message, sorta
+            return ko.validated(function() {
+                var val = underlying_observable();
+                if ( _(val).has('ok') ) {
+                    return otherValidated(); // Which will either be 'ok' or 'errors' as well.
+                } else {
+                    return val; // Which must be {'errors': [ ... ]}
+                }
+            });
+        };
+
+        underlying_observable.implies = function(otherValidated) {
+            return ko.validated(function() {
+                var val = underlying_observable();
+                if ( _(val).has('ok') ) {
+                    return otherValidated();
+                } else {
+                    return { 'ok': null }
+                }
+            });
+        }
+        
+        underlying_observable.orElse = function(otherValidated) {
+            return ko.validated(function() {
+                var val = underlying_observable();
+                if ( _(val).has('ok') ) {
+                    return val;
+                } else {
+                    return otherValidated();
+                }
+            });
+        }
+
+        return underlying_observable;
+    };
     
     ///// λ monotonicObject :: { source: obslike [a], getKey: (a -> String), getValue: (a -> b)? } -> obs {b}
     //
@@ -173,6 +218,29 @@ function(ko, _) {
 
         return underlyingObservable;
     }
+    
+    ///// λ wrapObservable :: (a | Observable a) -> Observable a
+    //
+    // Creates an observable if not already.
+
+    kc.wrapObservable = function(v) {
+        return ko.isObservable(v) ? v : ko.observable(v);
+    };
+    
+    
+    ///// λ map :: (a -> b) -> Observable a -> Observable b
+    //
+    // Curried map of the Observable functor
+
+    kc.map = function(f) {
+        return function(obs) {
+            return ko.computed(function() {
+                return f(obs());
+            });
+        };
+    },
+
+
     
     ///// λ deepUnwrap :: * -> Number? -> *
     //
