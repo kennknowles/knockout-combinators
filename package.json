@@ -1,6 +1,6 @@
 {
     "name": "knockout-combinators",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "description": "Utilities to combining & compose Knockout observables",
     "author": "Kenneth Knowles <kenn.knowles@gmail.com> (http://kennknowles.com)",
     "license": "Apache 2.0",
