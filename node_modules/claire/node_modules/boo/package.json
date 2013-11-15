@@ -1,0 +1,44 @@
+{
+  "name": "boo",
+  "version": "1.2.4",
+  "author": {
+    "name": "Quildreen \"Sorella\" Motta",
+    "email": "quildreen@gmail.com"
+  },
+  "description": "Core prototypical primitives for Object Orientation/Composition.",
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/killdream/boo.git"
+  },
+  "bugs": {
+    "url": "http://github.com/killdream/boo/issues"
+  },
+  "scripts": {
+    "test": "mocha",
+    "benchmark": "node ./test/benchmarks/suite"
+  },
+  "main": "./lib/boo.js",
+  "keywords": [
+    "object orientation",
+    "oop",
+    "mixins",
+    "prototypes"
+  ],
+  "licence": "MIT",
+  "devDependencies": {
+    "mocha": "~1.7.4",
+    "should": "~1.2.1",
+    "benchmark": "~1.0.0",
+    "microtime": "~0.3.3"
+  },
+  "contributors": [
+    {
+      "name": "Quildreen \"Sorella\" Motta",
+      "url": "http://killdream.github.com/"
+    }
+  ],
+  "readme": "Boo\n===\n\nBoo provides utilities to structure a program by means of prototypical\nobject orientation and object composition, in an easy way. It provides\nyou with inheritance, composition and mixin facilities, all packaged in\na nice API.\n\n    var Animal = boo.Base.derive({\n      name: 'Unknow'\n    \n    , say:\n      function say(thing) {\n        return this.name + ': ' + thing }\n    })\n    \n    var Cat = Animal.derive({\n      init:\n      function init(name) {\n        if (name) this.name = name }\n    })\n    \n    var nyah = Cat.make('Nyan Cat')\n    nyah.say('Nyan nyan nyan~')\n\n\nInstalling\n----------\n\nWith Node.js and NPM, you can do the easy-modo install:\n\n    $ npm install boo\n    # then require it as usual\n    node> var boo = require('boo')\n\nIn the browser, you have to include the script tag pointing to the\n`boo.js` file:\n\n    <script src=\"/path/to/boo.js\"></script>\n    <script type=\"text/javascript\">\n      // `boo' is in the global scope now\n    </script>\n\n\nTesting\n-------\n\nBoo's test cases use [Mocha][] with the BDD assertion module\n[should.js][]. For testing on Node.js, you can just grab the module from\nNPM and run the test cases by issuing `mocha` from the command line:\n\n    $ sudo npm install -g mocha\n    $ mocha\n\n[Mocha]: visionmedia.github.com/mocha/\n[should.js]: https://github.com/visionmedia/should.js\n\n\nLearning\n--------\n\nBoo ships with a [full narrated reference manual][ref], covering the\nconcepts and designs you need to know to use the library effectively.\nYou can either read it online, or locally — from the file \n`docs/build/html/index.html`. \n\nAdditionally, you can read the following introduction to Boo:\n\n- [Yay for sugary JavaScript OO][intro]\n\n\n[ref]: http://boo.readthedocs.org/\n[intro]: http://killdream.github.com/blog/2011/11/for-sugary-object-oriented-js/index.html\n\n\nGetting support\n---------------\n\nBoo uses the [Github tracker][] for tracking bugs and new features.\n\n[Github tracker]: https://github.com/Orphoundation/boo/issues\n\n\nLicence\n-------\n\nMIT/X11.\n",
+  "readmeFilename": "README.md",
+  "_id": "boo@1.2.4",
+  "_from": "boo@~1.2.4"
+}

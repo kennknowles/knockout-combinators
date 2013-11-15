@@ -16,7 +16,6 @@ results
 
 # Node / NPM
 npm-debug.log
-/node_modules
 
 # Bower
 /components
